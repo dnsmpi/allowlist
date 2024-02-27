@@ -5,3 +5,7 @@
 - name: https sni
   action: block
   expr: let sni = tls?.req?.sni; sni != nil && sni != "" && !geosite(sni, "allow")
+
+- name: quic sni
+  action: block
+  expr: let sni = quic?.req?.sni; sni != nil && sni != "" && !geosite(sni, "allow")
