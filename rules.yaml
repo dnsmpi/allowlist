@@ -1,0 +1,7 @@
+- name: http host
+  action: block
+  expr: let host = http?.req?.headers?.host; host != nil && host != "" && !geosite(host, "allow")
+
+- name: https sni
+  action: block
+  expr: let sni = tls?.req?.sni; sni != nil && sni != "" && !geosite(sni, "allow")

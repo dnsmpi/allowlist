@@ -1,0 +1,5 @@
+io:
+  local: true
+
+ruleset:
+  geosite: ./publish/geosite.dat
