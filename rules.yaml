@@ -1,6 +1,6 @@
 - name: http host
   action: block
-  expr: let host = http?.req?.headers?.host; host != nil && host != "" && !geosite(host, "allow")
+  expr: let host = http?.req?.headers?.host; host != nil && !(host matches "^[0-9.:]*$") && (let sni = split(host, ":", 2)[0]; !geosite(sni, "allow"))
 
 - name: https sni
   action: block
